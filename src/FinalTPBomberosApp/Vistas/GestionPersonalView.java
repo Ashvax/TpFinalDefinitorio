@@ -22,6 +22,7 @@ public class GestionPersonalView extends javax.swing.JInternalFrame {
 
     public GestionPersonalView() {
         initComponents();
+        JBGuardarModificaciones.setEnabled(false);
         CargarComboBox();
      
     }
@@ -117,11 +118,23 @@ public class GestionPersonalView extends javax.swing.JInternalFrame {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 JTFNombresKeyTyped(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFNombresKeyReleased(evt);
+            }
+        });
+
+        JTFTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFTelefonoKeyReleased(evt);
+            }
         });
 
         JTFApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 JTFApellidosKeyTyped(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFApellidosKeyReleased(evt);
             }
         });
 
@@ -365,6 +378,18 @@ public class GestionPersonalView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_JTFApellidosKeyTyped
 
+    private void JTFNombresKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFNombresKeyReleased
+        ComprobarCampos();
+    }//GEN-LAST:event_JTFNombresKeyReleased
+
+    private void JTFApellidosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFApellidosKeyReleased
+        ComprobarCampos();
+    }//GEN-LAST:event_JTFApellidosKeyReleased
+
+    private void JTFTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFTelefonoKeyReleased
+        ComprobarCampos();
+    }//GEN-LAST:event_JTFTelefonoKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBBuscarPorDni;
     private javax.swing.JButton JBBuscarPorID;
@@ -411,5 +436,17 @@ public class GestionPersonalView extends javax.swing.JInternalFrame {
         JCBGrupoSanguineo.setSelectedIndex(0);
         JCBNombreClave.setSelectedIndex(0);
     }
-
+private void ComprobarCampos(){
+    boolean name = !(JTFNombres.getText().equals(""));
+    boolean surname = !(JTFApellidos.getText().equals(""));
+    boolean phone = !(JTFTelefono.getText().equals(""));
+    
+    if (name && surname && phone){
+        JBGuardarModificaciones.setEnabled(true);
+    }else {
+        JBGuardarModificaciones.setEnabled(false);
+    }
+    
+    
+}
 }

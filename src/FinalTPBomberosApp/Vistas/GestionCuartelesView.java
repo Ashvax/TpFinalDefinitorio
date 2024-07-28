@@ -6,18 +6,22 @@ import FinalTPBomberosApp.Entidades.Cuartel;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class GestionCuartelesView extends javax.swing.JInternalFrame {
 
     private Cuartel cuartel = new Cuartel();
     private CuartelData cuartelData = new CuartelData();
     private List<Cuartel> listarCuarteles = cuartelData.ListarCuarteles();
-
+    
     public GestionCuartelesView() {
         initComponents();
+        JBAgregarCuartel.setEnabled(false);
+        JBGuardarModificaciones.setEnabled(false);
         
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -86,12 +90,48 @@ public class GestionCuartelesView extends javax.swing.JInternalFrame {
             }
         });
 
+        JTFDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFDireccionKeyReleased(evt);
+            }
+        });
+
+        JTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFNombreKeyReleased(evt);
+            }
+        });
+
+        JTFCoordX.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFCoordXKeyReleased(evt);
+            }
+        });
+
+        JTFTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFTelefonoKeyReleased(evt);
+            }
+        });
+
+        JTFCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFCorreoKeyReleased(evt);
+            }
+        });
+
         JBBuscar.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         JBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FinalTPBomberosApp/Imagenes/JBBuscar.jpg"))); // NOI18N
         JBBuscar.setText("Buscar");
         JBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBBuscarActionPerformed(evt);
+            }
+        });
+
+        JTFCoordY.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFCoordYKeyReleased(evt);
             }
         });
 
@@ -309,6 +349,31 @@ public class GestionCuartelesView extends javax.swing.JInternalFrame {
       
     }//GEN-LAST:event_JRBEstadoActionPerformed
 
+    private void JTFCorreoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFCorreoKeyReleased
+
+                controlarCampos();
+    }//GEN-LAST:event_JTFCorreoKeyReleased
+    
+    private void JTFTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFTelefonoKeyReleased
+       controlarCampos();
+    }//GEN-LAST:event_JTFTelefonoKeyReleased
+
+    private void JTFNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFNombreKeyReleased
+        controlarCampos();
+    }//GEN-LAST:event_JTFNombreKeyReleased
+
+    private void JTFDireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFDireccionKeyReleased
+        controlarCampos();
+    }//GEN-LAST:event_JTFDireccionKeyReleased
+
+    private void JTFCoordXKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFCoordXKeyReleased
+        controlarCampos();
+    }//GEN-LAST:event_JTFCoordXKeyReleased
+
+    private void JTFCoordYKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFCoordYKeyReleased
+        controlarCampos();
+    }//GEN-LAST:event_JTFCoordYKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBAgregarCuartel;
     private javax.swing.JButton JBBuscar;
@@ -340,5 +405,47 @@ public class GestionCuartelesView extends javax.swing.JInternalFrame {
         JTFTelefono.setText("");
         JTFCorreo.setText("");
         JRBEstado.setSelected(false);
+    }
+    private void controlarCampos(){
+       boolean nom = !(JTFNombre.getText().equals(""));
+       boolean dir = !(JTFDireccion.getText().equals(""));
+       boolean cx= !(JTFCoordX.getText().equals(""));
+       boolean cy= !(JTFCoordY.getText().equals(""));
+       boolean corr= !(JTFCorreo.getText().equals(""));
+       boolean tel= !(JTFNombre.getText().equals(""));
+       
+       String numero = JTFTelefono.getText();
+       Pattern patn = Pattern.compile("^[0-9]{10,}$");
+       Matcher Match = patn.matcher(numero);
+       if (Match.matches()) {
+           tel=true;
+           
+       }else {
+           tel=false;
+           
+           JBAgregarCuartel.setEnabled(false);
+           JBGuardarModificaciones.setEnabled(false);
+       }
+       
+        String correo= JTFCorreo.getText();
+        Pattern patt = Pattern.compile("\\w+[@](hotmail|gmail|yahoo|outlook)(.)(com)((.)[a-z]{2})*");
+        Matcher match = patt.matcher(correo);
+
+        if(match.matches()){
+           corr=true;
+        }else{
+           corr=false;
+        }
+        
+       if(nom&&dir&&cx&&cy&&corr&&tel) {
+           
+           JBAgregarCuartel.setEnabled(true);
+           JBGuardarModificaciones.setEnabled(true);
+       }
+       else{
+           JBAgregarCuartel.setEnabled(false);
+           JBGuardarModificaciones.setEnabled(false);
+       }
+       
     }
 }

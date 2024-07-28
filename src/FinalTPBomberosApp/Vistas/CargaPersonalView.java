@@ -22,6 +22,7 @@ public class CargaPersonalView extends javax.swing.JInternalFrame {
 
     public CargaPersonalView() {
         initComponents();
+        JBGuardar.setEnabled(false);
         CargarComboBox();
       
     }
@@ -83,11 +84,29 @@ public class CargaPersonalView extends javax.swing.JInternalFrame {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 JTFNombreKeyTyped(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFNombreKeyReleased(evt);
+            }
+        });
+
+        JTFDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFDniKeyReleased(evt);
+            }
         });
 
         JTFApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 JTFApellidoKeyTyped(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFApellidoKeyReleased(evt);
+            }
+        });
+
+        JTFTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFTelefonoKeyReleased(evt);
             }
         });
 
@@ -267,6 +286,22 @@ public class CargaPersonalView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_JTFApellidoKeyTyped
 
+    private void JTFNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFNombreKeyReleased
+        verificarCampos();
+    }//GEN-LAST:event_JTFNombreKeyReleased
+
+    private void JTFApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFApellidoKeyReleased
+        verificarCampos();
+    }//GEN-LAST:event_JTFApellidoKeyReleased
+
+    private void JTFDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFDniKeyReleased
+       verificarCampos();
+    }//GEN-LAST:event_JTFDniKeyReleased
+
+    private void JTFTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFTelefonoKeyReleased
+        verificarCampos();
+    }//GEN-LAST:event_JTFTelefonoKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBGuardar;
     private javax.swing.JButton JBSalir;
@@ -307,5 +342,18 @@ public class CargaPersonalView extends javax.swing.JInternalFrame {
         JCBCodigoDeBrigada.setSelectedIndex(0);
         JCBGrupoSanguineo.setSelectedIndex(0);
         JCBNombreClave.setSelectedIndex(0);
+    }
+    private void verificarCampos(){
+        boolean nom = !(JTFNombre.getText().equals(""));
+        boolean ape = !(JTFApellido.getText().equals(""));
+        boolean dni = !(JTFDni.getText().equals(""));
+        boolean tel = !(JTFTelefono.getText().equals(""));
+        
+        if (nom&&ape&&dni&&tel){
+            JBGuardar.setEnabled(true);
+            
+        }else {
+            JBGuardar.setEnabled(false);
+        }
     }
 }

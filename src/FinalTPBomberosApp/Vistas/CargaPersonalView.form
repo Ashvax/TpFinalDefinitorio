@@ -216,18 +216,26 @@
     <Component class="javax.swing.JTextField" name="JTFNombre">
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFNombreKeyTyped"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFNombreKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFDni">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFDniKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFApellido">
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFApellidoKeyTyped"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFApellidoKeyReleased"/>
       </Events>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="JDCFechaNacimiento">
     </Component>
     <Component class="javax.swing.JTextField" name="JTFTelefono">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFTelefonoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JBGuardar">
       <Properties>

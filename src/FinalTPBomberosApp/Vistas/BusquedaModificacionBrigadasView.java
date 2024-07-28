@@ -23,6 +23,8 @@ public class BusquedaModificacionBrigadasView extends javax.swing.JInternalFrame
     public BusquedaModificacionBrigadasView() {
         initComponents();
         llenarJCBCuartel();
+        JBNuevo.setEnabled(false);
+        JBModificar.setEnabled(false);
        
     }
 
@@ -68,6 +70,12 @@ public class BusquedaModificacionBrigadasView extends javax.swing.JInternalFrame
             }
         });
 
+        JTFNombreBrigada.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFNombreBrigadaKeyReleased(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel3.setText("Nombre Brigada");
 
@@ -76,6 +84,12 @@ public class BusquedaModificacionBrigadasView extends javax.swing.JInternalFrame
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel5.setText("Especialidad");
+
+        JTFEspecialidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                JTFEspecialidadKeyReleased(evt);
+            }
+        });
 
         JRBEstado.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         JRBEstado.setText("Estado");
@@ -407,6 +421,14 @@ public class BusquedaModificacionBrigadasView extends javax.swing.JInternalFrame
         }
     }//GEN-LAST:event_JCBCuartelesItemStateChanged
 
+    private void JTFEspecialidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFEspecialidadKeyReleased
+        confirmarCampos();
+    }//GEN-LAST:event_JTFEspecialidadKeyReleased
+
+    private void JTFNombreBrigadaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFNombreBrigadaKeyReleased
+        confirmarCampos();
+    }//GEN-LAST:event_JTFNombreBrigadaKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBBuscar;
     private javax.swing.JButton JBBuscarPorIDCuartel;
@@ -462,5 +484,17 @@ public class BusquedaModificacionBrigadasView extends javax.swing.JInternalFrame
         JRBDisponibilidad.setSelected(false);
         JRBEstado.setSelected(false);
         JRBMostrarCuarteles.setSelected(false);
+    }
+    private void confirmarCampos(){
+        boolean nombre = !(JTFNombreBrigada.getText().equals(""));
+        boolean Esp = !(JTFEspecialidad.getText().equals(""));
+        
+        if (nombre&&Esp){
+            JBNuevo.setEnabled(true);
+            JBModificar.setEnabled(true);
+        }else {
+            JBNuevo.setEnabled(false);
+            JBModificar.setEnabled(false);
+        }
     }
 }

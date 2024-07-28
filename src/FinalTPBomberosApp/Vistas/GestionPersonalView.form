@@ -293,17 +293,22 @@
     <Component class="javax.swing.JTextField" name="JTFNombres">
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFNombresKeyTyped"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFNombresKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFDni">
     </Component>
     <Component class="javax.swing.JTextField" name="JTFTelefono">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFTelefonoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="JDCFechaDeNacimiento">
     </Component>
     <Component class="javax.swing.JTextField" name="JTFApellidos">
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFApellidosKeyTyped"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFApellidosKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JBBuscarPorDni">

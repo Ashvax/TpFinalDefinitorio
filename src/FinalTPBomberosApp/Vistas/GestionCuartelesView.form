@@ -245,14 +245,29 @@
     <Component class="javax.swing.JTextField" name="JTFCodigo">
     </Component>
     <Component class="javax.swing.JTextField" name="JTFDireccion">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFDireccionKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFNombre">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFNombreKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFCoordX">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFCoordXKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFTelefono">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFTelefonoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFCorreo">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFCorreoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JBBuscar">
       <Properties>
@@ -269,6 +284,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFCoordY">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JTFCoordYKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="JRBEstado">
       <Properties>
