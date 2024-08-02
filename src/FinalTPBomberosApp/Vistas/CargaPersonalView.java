@@ -7,6 +7,9 @@ import FinalTPBomberosApp.Entidades.Bombero;
 import FinalTPBomberosApp.Entidades.Brigada;
 
 import java.awt.Color;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.time.ZoneId;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -120,6 +123,7 @@ public class CargaPersonalView extends javax.swing.JInternalFrame {
         });
 
         JCBGrupoSanguineo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" }));
+        JCBGrupoSanguineo.setSelectedIndex(-1);
 
         JBSalir.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         JBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FinalTPBomberosApp/Imagenes/JBSalir.png.jpg"))); // NOI18N
@@ -134,6 +138,12 @@ public class CargaPersonalView extends javax.swing.JInternalFrame {
         jLabel10.setText("Asignacion de nombre clave");
 
         JCBNombreClave.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Alfa", "Beta", "Gama", "Omega", "Zetta" }));
+        JCBNombreClave.setSelectedIndex(-1);
+        JCBNombreClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JCBNombreClaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -236,6 +246,17 @@ public class CargaPersonalView extends javax.swing.JInternalFrame {
 
     private void JBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGuardarActionPerformed
         try {
+        // Obtener la fecha seleccionada y calcular la edad
+        java.util.Date fechaNacimientoDate = JDCFechaNacimiento.getDate();
+        LocalDate fechaNacimiento = fechaNacimientoDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaActual = LocalDate.now();
+        int edad = Period.between(fechaNacimiento, fechaActual).getYears();
+
+        // Validar que la edad sea mayor o igual a 18 años
+        if (edad < 18) {
+            JOptionPane.showMessageDialog(this, "La edad debe ser mayor o igual a 18 años.");
+            return; // Salir del método si la edad no es válida
+        }
             Brigada brigada = new Brigada();
             bombero.setDni(Integer.parseInt(JTFDni.getText()));
             bombero.setApellido(JTFApellido.getText());
@@ -301,6 +322,10 @@ public class CargaPersonalView extends javax.swing.JInternalFrame {
     private void JTFTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTFTelefonoKeyReleased
         verificarCampos();
     }//GEN-LAST:event_JTFTelefonoKeyReleased
+
+    private void JCBNombreClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCBNombreClaveActionPerformed
+
+    }//GEN-LAST:event_JCBNombreClaveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBGuardar;

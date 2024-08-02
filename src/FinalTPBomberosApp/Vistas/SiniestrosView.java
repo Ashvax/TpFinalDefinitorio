@@ -553,8 +553,5 @@ public class SiniestrosView extends javax.swing.JInternalFrame {
         
          JBSalir.setBackground(new Color(74, 84, 89));
         JBSalir.setForeground(new Color(200, 214, 214));
-        
-   }
-    
-    
+   }    
 }

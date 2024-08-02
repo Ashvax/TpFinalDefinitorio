@@ -158,7 +158,5 @@ public class CuartelData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cuartel" + ex.getMessage());
         }
         return cuarteles;
-    }
-
-    
+    }    
 }

@@ -136,7 +136,5 @@ public class Bombero {
                 ", Estado" + estado +
                 ", Nombre clave" + nombre_clave;
                 
-    }
-
-    
+    }    
 }

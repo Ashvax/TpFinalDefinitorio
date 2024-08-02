@@ -365,5 +365,4 @@ public class GestionBomberosApp extends javax.swing.JFrame {
         escritorio.add(base);
         
     }
-
 }

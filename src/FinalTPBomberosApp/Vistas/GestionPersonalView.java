@@ -6,6 +6,8 @@ import FinalTPBomberosApp.AccesoADatos.BrigadaData;
 import FinalTPBomberosApp.Entidades.Bombero;
 import FinalTPBomberosApp.Entidades.Brigada;
 import java.awt.Color;
+import java.time.LocalDate;
+import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -278,6 +280,17 @@ public class GestionPersonalView extends javax.swing.JInternalFrame {
     private void JBGuardarModificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGuardarModificacionesActionPerformed
 
         try {
+                    // Obtener la fecha seleccionada y calcular la edad
+        java.util.Date fechaNacimientoDate = JDCFechaDeNacimiento.getDate();
+        LocalDate fechaNacimiento = fechaNacimientoDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaActual = LocalDate.now();
+        int edad = Period.between(fechaNacimiento, fechaActual).getYears();
+
+        // Validar que la edad sea mayor o igual a 18 años
+        if (edad < 18) {
+            JOptionPane.showMessageDialog(this, "La edad debe ser mayor o igual a 18 años.");
+            return; // Salir del método si la edad no es válida
+        }
             Brigada brigada = new Brigada();
             bombero.setApellido(JTFApellidos.getText());
             bombero.setNombre(JTFNombres.getText());
@@ -445,8 +458,6 @@ private void ComprobarCampos(){
         JBGuardarModificaciones.setEnabled(true);
     }else {
         JBGuardarModificaciones.setEnabled(false);
+        } 
     }
-    
-    
-}
 }

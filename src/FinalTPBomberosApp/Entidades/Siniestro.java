@@ -148,5 +148,4 @@ public class Siniestro {
                 + ", Calificacion " + calificacion
                 + ", Estado " + estado;
     }
-
 }

@@ -20,6 +20,7 @@ public class BomberoData {
     public BomberoData() {
         con = ConexionData.getConexion();
     }
+    
 
     public void GuardarBombero(Bombero bombero) {
         String SQL = "INSERT INTO bombero (nombre, apellido, dni, fecha_nacimiento, grupo_sanguineo, id_brigada, celular, estado, nombre_clave) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -233,5 +234,4 @@ public class BomberoData {
         }
         return bomberos;
     }
-
 }

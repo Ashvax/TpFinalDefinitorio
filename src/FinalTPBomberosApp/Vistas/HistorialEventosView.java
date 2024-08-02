@@ -244,5 +244,4 @@ public class HistorialEventosView extends javax.swing.JInternalFrame {
         }
 
     }
-
 }

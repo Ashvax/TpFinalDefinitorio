@@ -110,5 +110,4 @@ public class Brigada {
                 ", Nombre Cuartel " + nombre_cuartel;
         
     }
-
 }

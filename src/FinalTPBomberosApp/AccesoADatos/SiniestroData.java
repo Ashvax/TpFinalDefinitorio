@@ -251,5 +251,4 @@ public class SiniestroData {
         }
         return siniestros;
     }
-
 }

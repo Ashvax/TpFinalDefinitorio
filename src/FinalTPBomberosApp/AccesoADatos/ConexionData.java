@@ -32,6 +32,5 @@ public class ConexionData {
                 JOptionPane.showMessageDialog(null,"Error a cargar los drivers"+ ex);
             }}
         return connection;
-    }
-        
+    }     
 }

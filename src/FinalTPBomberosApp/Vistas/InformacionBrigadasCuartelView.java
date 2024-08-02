@@ -180,5 +180,4 @@ public class InformacionBrigadasCuartelView extends javax.swing.JInternalFrame {
 
         JTablaBrigadasEnCuartel.setModel(modelo);
     }
-
 }
